@@ -43,9 +43,11 @@ histopathologic-cancer-classification/
 │   ├── Copy_of_cnn_project_colab.ipynb      # Custom CNN V1 + V2 (baseline & improved)
 │   ├── ResNet50_MiniProject.ipynb           # ResNet50 transfer learning + Grad-CAM
 │   └── DenseNetFinal121.ipynb               # DenseNet121 transfer learning
-├── reports/
+├── report/
 │   └── Histopathologic-Cancer-Classification-using-Deep-Learning-CNN.pdf
 └── outputs/
+    ├── resnet50/
+    │   └── gradcam_explainability.png       # Grad-CAM heatmap overlay example
     └── densenet121/
         ├── training_curves.png          # Feature extraction + fine-tuning curves
         └── confusion_matrix_roc.png     # Val/test confusion matrices + ROC curve
@@ -117,6 +119,9 @@ Input (224×224×3)
 2. **Fine-tuning:** Last 20 ResNet50 layers unfrozen, 5 more epochs, lr = 1e-5.
 
 Includes Grad-CAM visualization to interpret which image regions the model attends to.
+
+![ResNet50 Grad-CAM explainability — original patch, heatmap, and overlay](outputs/resnet50/gradcam_explainability.png)
+*Grad-CAM overlay on a correctly classified cancer patch (True: 1, Pred: 1, 91.74% confidence) — the model's attention concentrates on the dense cell cluster, not background tissue.*
 
 ### DenseNet121 (Transfer Learning)
 
