@@ -35,22 +35,36 @@ The raw dataset is imbalanced (130,908 negative vs. 89,117 positive). The majori
 
 ## Repository Structure
 
-```
+```text
 histopathologic-cancer-classification/
-├── README.md
-├── requirements.txt
+│
 ├── notebooks/
-│   ├── Copy_of_cnn_project_colab.ipynb      # Custom CNN V1 + V2 (baseline & improved)
-│   ├── ResNet50_MiniProject.ipynb           # ResNet50 transfer learning + Grad-CAM
-│   └── DenseNetFinal121.ipynb               # DenseNet121 transfer learning
+│   ├── Custom_CNN.ipynb
+│   ├── ResNet50.ipynb
+│   └── DenseNet121.ipynb
+│
+├── outputs/
+│   ├── Custom_CNN/
+│   │   ├── training_curves_cnn_V1.png
+│   │   ├── training_curves_cnn_V2.png
+│   │   ├── confusion_matrix_cnn_v1_test.png
+│   │   ├── confusion_matrix_cnn_v2_test.png
+│   │   └── comparison_cnn_v1_vs_v2.png
+│   │
+│   ├── resnet50/
+│   │   ├── resnet_training_curves.png
+│   │   ├── resnet_confusion_matrix.png
+│   │   └── gradcam_explainability.png
+│   │
+│   └── densenet121/
+│       ├── training_curves.png
+│       └── confusion_matrix_roc.png
+│
 ├── report/
 │   └── Histopathologic-Cancer-Classification-using-Deep-Learning-CNN.pdf
-└── outputs/
-    ├── resnet50/
-    │   └── gradcam_explainability.png       # Grad-CAM heatmap overlay example
-    └── densenet121/
-        ├── training_curves.png          # Feature extraction + fine-tuning curves
-        └── confusion_matrix_roc.png     # Val/test confusion matrices + ROC curve
+│
+├── README.md
+└── requirements.txt
 ```
 
 ## Pipeline
@@ -196,9 +210,27 @@ A high initial learning rate (1e-3) speeds convergence when training a randomly 
 |---|---|---|
 | AUC (ROC) | 0.9404 | 0.9358 |
 
+### Custom CNN — Training Curves & Confusion Matrices
+
+![Custom CNN V1 training curves](outputs/Custom_CNN/training_curves_cnn_V1.png)
+
+![Custom CNN V2 training curves](outputs/Custom_CNN/training_curves_cnn_V2.png)
+
+![Custom CNN V1 confusion matrix (test set)](outputs/Custom_CNN/confusion_matrix_cnn_v1_test.png)
+
+![Custom CNN V2 confusion matrix (test set)](outputs/Custom_CNN/confusion_matrix_cnn_v2_test.png)
+
+![Custom CNN V1 vs V2 comparison](outputs/Custom_CNN/comparison_cnn_v1_vs_v2.png)
+
+### ResNet50 — Training Curves & Confusion Matrix
+
+![ResNet50 training curves](outputs/resnet50/resnet_training_curves.png)
+
+![ResNet50 confusion matrix](outputs/resnet50/resnet_confusion_matrix.png)
+
 ### DenseNet121 — Training Curves & Confusion Matrix
 
-DenseNet121 was the best-performing model, so its curves and confusion matrices are included directly below. Plots for the other models are saved under `outputs/`.
+DenseNet121 was the best-performing model, so its curves and confusion matrices are included directly below.
 
 ![DenseNet121 training curves — feature extraction and fine-tuning phases](outputs/densenet121/training_curves.png)
 *Accuracy, loss, and AUC across both training phases. Validation tracks training closely with no major overfitting gap.*
@@ -247,8 +279,8 @@ pip install -r requirements.txt
 
 ## How to Run
 
-1. **Custom CNN (V1 & V2):** Run `notebooks/Copy_of_cnn_project_colab.ipynb` top to bottom — downloads data, builds the balanced 20K subset, splits 60/20/20, trains both CNN versions, and produces confusion matrices + training curves.
-2. **ResNet50:** Run `notebooks/ResNet50_MiniProject.ipynb` — builds a 70/15/15 split, trains the two-phase model, evaluates on val/test, and generates Grad-CAM visualizations.
-3. **DenseNet121:** Run `notebooks/DenseNetFinal121.ipynb` — same data pipeline as ResNet50, with the DenseNet121 backbone.
+1. **Custom CNN (V1 & V2):** Run `notebooks/Custom_CNN.ipynb` top to bottom — downloads data, builds the balanced 20K subset, splits 60/20/20, trains both CNN versions, and produces confusion matrices + training curves.
+2. **ResNet50:** Run `notebooks/ResNet50.ipynb` — builds a 70/15/15 split, trains the two-phase model, evaluates on val/test, and generates Grad-CAM visualizations.
+3. **DenseNet121:** Run `notebooks/DenseNet121.ipynb` — same data pipeline as ResNet50, with the DenseNet121 backbone.
 
 Each notebook is self-contained and regenerates its own data subset/splits with a fixed `random_state=42` for reproducibility.
