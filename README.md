@@ -212,21 +212,11 @@ A high initial learning rate (1e-3) speeds convergence when training a randomly 
 
 ### Custom CNN — Training Curves & Confusion Matrices
 
-![Custom CNN V1 training curves](outputs/Custom_CNN/training_curves_cnn_V1.png)
-
-![Custom CNN V2 training curves](outputs/Custom_CNN/training_curves_cnn_V2.png)
-
-![Custom CNN V1 confusion matrix (test set)](outputs/Custom_CNN/confusion_matrix_cnn_v1_test.png)
-
-![Custom CNN V2 confusion matrix (test set)](outputs/Custom_CNN/confusion_matrix_cnn_v2_test.png)
-
-![Custom CNN V1 vs V2 comparison](outputs/Custom_CNN/comparison_cnn_v1_vs_v2.png)
+Plots for both CNN versions (V1 and V2 training curves, confusion matrices, and a side-by-side comparison) are saved under `outputs/Custom_CNN/`.
 
 ### ResNet50 — Training Curves & Confusion Matrix
 
-![ResNet50 training curves](outputs/resnet50/resnet_training_curves.png)
-
-![ResNet50 confusion matrix](outputs/resnet50/resnet_confusion_matrix.png)
+Training curves and the confusion matrix are saved under `outputs/resnet50/`. The Grad-CAM explainability example is shown above, under the [ResNet50 model section](#resnet50-transfer-learning).
 
 ### DenseNet121 — Training Curves & Confusion Matrix
 
